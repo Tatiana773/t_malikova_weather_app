@@ -24,7 +24,7 @@ export const fetchData = (query) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': '0710ea5e90mshca86e4a17dc80b7p1be137jsn4c802ffaca9c',
+                    'X-RapidAPI-Key': 'XXXX',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                   }
             })
@@ -51,7 +51,7 @@ export const fetchForecast = (restUrl) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': '0710ea5e90mshca86e4a17dc80b7p1be137jsn4c802ffaca9c',
+                    'X-RapidAPI-Key': 'XXXX',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                   }
             })
@@ -78,7 +78,7 @@ export const fetchHistory = (restUrl) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': '0710ea5e90mshca86e4a17dc80b7p1be137jsn4c802ffaca9c',
+                    'X-RapidAPI-Key': 'XXXX',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                   }
             })
@@ -106,7 +106,7 @@ export const fetchSport = (restUrl) => {
             {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': '0710ea5e90mshca86e4a17dc80b7p1be137jsn4c802ffaca9c',
+                    'X-RapidAPI-Key': 'XXXX',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                   }
             })
