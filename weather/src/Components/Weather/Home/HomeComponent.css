@@ -1,0 +1,18 @@
+
+.mainInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items:center;
+}
+.mainInfo .container{
+    width: 70%;
+}
+
+.search{
+    margin: 3%;
+}
+.link{
+    text-decoration: none;
+    color:black;
+}

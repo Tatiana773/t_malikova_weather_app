@@ -1,0 +1,18 @@
+.main{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  overflow: scroll;
+}
+#light{
+  background-image: url("https://assets.capitalfm.com/2013/30/weather-1375260252-herowidev4-0.jpg");
+  color: #252121;;
+}
+#dark{
+  background-image: url("https://i.pinimg.com/originals/cf/2a/f7/cf2af7d910deadc8095576f7d2cf156d.jpg");
+  color: white;
+}
+::-webkit-scrollbar {
+  width: 5px; 
+  background:rgba(248, 248, 246, 0.2); 
+}

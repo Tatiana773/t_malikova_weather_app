@@ -1,0 +1,99 @@
+{
+    "city":{
+        "btns":{
+            "forecast": "FORECAST",
+            "history": "HISORY",
+            "sport": "SPORT",
+            "add to favorites":"Add to Favorites"
+        },
+        "latitude": "Lat:",
+        "longtitude": "Lon:",
+        "feels like": "Feels like",
+        "last updated": "Last updated",
+        "favourite cities":"Favourite cities:"
+        
+    },
+    "messages":{
+        "choose city": "Please choose a city",
+        "city in list": "This city is in the list",
+        "list is empty": "The list is empty",
+        "request failure": "Something went wrong",
+        "no events": "No events for now",
+        "code error": "Code should contain 4 numbers only",
+        "form error": "Check data",
+        "invalid": " is invalid",
+        "password error": "Password should contain 6 numbers only",
+        "tel error": "Phone number is invalid",
+        "not found": "Page not found",
+        "enter code": "Please enter verification code:"
+    },
+    "hours":{
+        "0": "00:00",
+        "1": "01:00",
+        "2": "02:00",
+        "3": "03:00",
+        "4": "04:00",
+        "5": "05:00",
+        "6": "06:00",
+        "7": "07:00",
+        "8": "08:00",
+        "9": "09:00",
+        "10": "10:00",
+        "11": "11:00",
+        "12": "12:00",
+        "13": "13:00",
+        "14": "14:00",
+        "15": "15:00",
+        "16": "16:00",
+        "17": "17:00",
+        "18": "18:00",
+        "19": "19:00",
+        "20": "20:00",
+        "21": "21:00",
+        "22": "22:00",
+        "23": "23:00"
+    },
+    "inputs":{
+        "date": "Date",
+        "city": "City",
+        "lang": "Language"
+    },
+    "home":{
+        "welcome": "Welcome to Good Weather!"
+    },
+    "sport":{
+        "stad": "Stadium:",
+        "country": "Country:",
+        "btn save":"Save",
+        "footbal": "Footbal",
+        "golf": "Golf",
+        "cricket": "Cricket"
+    },
+    "header":{
+        "home": "Home",
+        "logout": "Log out",
+        "account": "Account",
+        "settings": "Settings",
+        "metric": "Metric",
+        "imperial": "Imperial"
+    },
+    "account":{
+        "tel":"Phone",
+        "password": "Password",
+        "email": "E-mail",
+        "name": "Name",
+        "lastname": "Last Name",
+        "events": "My events:",
+        "btns":{
+            "edit": "Edit",
+            "signout": "Sign Out",
+            "cancel": "Cancel",
+            "enter": "Enter",
+            "login": "Log In",
+            "signin": "Sign In"
+        }
+    }
+
+    
+    
+}

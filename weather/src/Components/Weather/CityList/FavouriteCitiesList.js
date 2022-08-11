@@ -1,0 +1,47 @@
+import React, { useCallback, useState }from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFavouriteCities } from '../../../Store/Home/selectors';
+import { FavouriteCityComponent } from './FavoriteCity';
+import { deleteCityAction } from '../../../Store/Home/actions';
+import { styled } from '@mui/material/styles';
+import List from '@mui/material/List';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
+import "../../i18n";
+
+
+export const FavouriteCitiesListComponent = () =>{
+    const favoriteCities = useSelector(selectFavouriteCities);
+    const dispatch = useDispatch();
+    const [dense, setDense] = useState(false);
+    const { t } = useTranslation();
+    const onRemoveCity = useCallback ((id)=>dispatch(deleteCityAction(id)),[dispatch]);
+
+    const Demo = styled('div')(({ theme }) => ({
+      backgroundColor: 'rgba(248, 248, 246, 0.2)',
+      boxShadow: '5px 5px 5px rgb(90, 87, 87)',
+
+    }));
+      
+    return(
+        <div>
+            <Grid item xs={12} md={6}>
+              <Typography sx={{ mt: 4, mb: 2 }} variant="h5" component="div" >
+                {t("city.favourite cities")}
+              </Typography>
+            <Demo>
+              <List dense={dense}>
+                { favoriteCities? favoriteCities.map((city) => <FavouriteCityComponent
+                  key={city.id}
+                  city={city} 
+                  onDeleteCity= {onRemoveCity}
+                  />):<p>{t("messages.list is empty")}</p>
+                }
+              </List>
+            </Demo>
+         </Grid>
+            
+        </div>
+    )
+}
