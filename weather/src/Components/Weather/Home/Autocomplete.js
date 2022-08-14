@@ -25,12 +25,15 @@ export const SearchCityComponent = () =>{
   const navigate = useNavigate();
 
   const onSearch = useCallback((event)=> {setSearched(event.target.value)},[setSearched]);
-  const debouncedSearch = useDebounce(searched, 2000);
+  const debouncedSearch = useDebounce(searched, 3000);
 
   useEffect(() => {
       if (debouncedSearch) {
+        if(searched){
         setSearchParams({city: searched || ""})
         dispatch(fetchData(searched));
+        }
+        
       }
     }, [debouncedSearch, searched, cityQuery]);
 

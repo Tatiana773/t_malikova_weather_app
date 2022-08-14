@@ -29,3 +29,4 @@ export const store = createStore((persistedReducer),applyMiddleware(logger, thun
 
 export const persistor = persistStore(store)
 
+

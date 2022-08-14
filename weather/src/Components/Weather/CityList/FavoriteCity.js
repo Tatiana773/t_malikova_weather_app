@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { updateCityAction } from '../../../Store/Home/actions'; 
+import "../City/CityPage.css";
 
 export const FavouriteCityComponent = ({city, onDeleteCity}) =>{
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export const FavouriteCityComponent = ({city, onDeleteCity}) =>{
    
     return(
         <div>
-            <ListItem
+            <ListItem className = "item"
                 secondaryAction={  
                 <IconButton edge="end" aria-label="delete" onClick = {onDelete}>
                     <ClearIcon />

@@ -12,29 +12,16 @@ import {
     fetchSportSuccess, 
     fetchSportFailure,
 } from "./actions";
+import { getData } from "../../Service/weatherApiProvider";
 
-
-const baseUrl = 'https://weatherapi-com.p.rapidapi.com/search.json?q=';
+const searchUrl = 'search.json?q=';
 
 export const fetchData = (query) => {
     return async(dispatch, getState) => {
         dispatch(fetchDataRequest());
         try{
-            const responce = await fetch(baseUrl + query,
-            {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': 'XXXX',
-                    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-                  }
-            })
-            if(responce.ok){
-                const data = await responce.json();
-                
-                dispatch(fetchDataSuccess(data));
-            }else{
-                dispatch(fetchDataFailure('Something went wrong'));
-            }
+            const responce = await getData(searchUrl + query);
+            dispatch(fetchDataSuccess(responce));
         }
         catch(error){
             dispatch(fetchDataFailure(error.message));
@@ -42,26 +29,13 @@ export const fetchData = (query) => {
     }
 } 
 
-const forecastUrl = 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=';
-export const fetchForecast = (restUrl) => {
+const forecastUrl = 'forecast.json?q=';
+export const fetchForecast = (query) => {
     return async(dispatch, getState) => {
         dispatch(fetchForecastRequest());
         try{
-            const responce = await fetch(forecastUrl + restUrl,
-            {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': 'XXXX',
-                    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-                  }
-            })
-            if(responce.ok){
-                const forecastData = await responce.json();
-                
-                dispatch(fetchForecastSuccess(forecastData));
-            }else{
-                dispatch(fetchForecastFailure('Something went wrong'));
-            }
+            const responce = await getData(forecastUrl + query);
+            dispatch(fetchForecastSuccess(responce));
         }
         catch(error){
             dispatch(fetchForecastFailure(error.message));
@@ -69,26 +43,13 @@ export const fetchForecast = (restUrl) => {
     }
 } 
 
-const historyUrl = 'https://weatherapi-com.p.rapidapi.com/history.json?q=';
-export const fetchHistory = (restUrl) => {
+const historyUrl = 'history.json?q=';
+export const fetchHistory = (query) => {
     return async(dispatch, getState) => {
         dispatch(fetchHistoryRequest());
         try{
-            const responce = await fetch(historyUrl + restUrl,
-            {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': 'XXXX',
-                    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-                  }
-            })
-            if(responce.ok){
-                const historyData = await responce.json();
-                
-                dispatch(fetchHistorySuccess(historyData));
-            }else{
-                dispatch(fetchHistoryFailure('Something went wrong'));
-            }
+            const responce = await getData(historyUrl + query);
+            dispatch(fetchHistorySuccess(responce));
         }
         catch(error){
             dispatch(fetchHistoryFailure(error.message));
@@ -96,27 +57,13 @@ export const fetchHistory = (restUrl) => {
     }
 } 
 
-const sportUrl = 'https://weatherapi-com.p.rapidapi.com/sports.json?q=';
-
-export const fetchSport = (restUrl) => {
+const sportUrl = 'sports.json?q=';
+export const fetchSport = (query) => {
     return async(dispatch, getState) => {
         dispatch(fetchSportRequest());
         try{
-            const responce = await fetch(sportUrl + restUrl,
-            {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': 'XXXX',
-                    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-                  }
-            })
-            if(responce.ok){
-                const sportData = await responce.json();
-                
-                dispatch(fetchSportSuccess(sportData));
-            }else{
-                dispatch(fetchSportFailure('Something went wrong'));
-            }
+            const responce = await getData(sportUrl + query)
+            dispatch(fetchSportSuccess(responce));
         }
         catch(error){
             dispatch(fetchSportFailure(error.message));

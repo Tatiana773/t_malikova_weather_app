@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./LoginComponent.css";
 import { TextInput } from "./TextInputComponent";
 import { PasswordInputComponent } from "./PasswordInputComponent";
@@ -7,6 +8,7 @@ import Button from "@mui/material/Button";
 import {  selectUsers, selectIsLogin} from "../../Store/App/selectors";
 import { setIsLoginAction, setCurrentUserAction } from "../../Store/App/actions";
 import { isValidEmail, isValidPassword } from "./FormSubmitHandler";
+import { Message } from "../Message/Message";
 import { useTranslation } from 'react-i18next';
 import "../i18n";
 
@@ -15,6 +17,7 @@ export const LogInComponent = () =>{
     const { t } = useTranslation();
     const users = useSelector(selectUsers);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [errorEmail, setErrorEmail] = useState(false);
     const [errorText, setErrorText] = useState("");
@@ -55,12 +58,14 @@ export const LogInComponent = () =>{
                 dispatch(setCurrentUserAction(current))
                 dispatch(setIsLoginAction(true));
                }
-            }else{
-                alert(t("messages.invalid"))
             }
         },[dispatch, users, validForm])
+        const onRegister = useCallback(()=>{
+            navigate("/register");
+        })
     return(
         <div className="form"> 
+         {!validForm?<Message message = {t("messages.form error")}/>: null}
             <div className="input">
                 <TextInput 
                     id="email" 
@@ -81,6 +86,8 @@ export const LogInComponent = () =>{
                 { errorPassword? <p className="errorText">{errorPasswordText}</p> : null}
             </div>
             <Button variant="text" onClick = {onSubmitLog} >{t("account.btns.login")}</Button>
+            <p>{t("account.or")}</p>
+            <Button variant="text" onClick = {onRegister} >{t("account.btns.signin")}</Button>
   
         </div>
     )

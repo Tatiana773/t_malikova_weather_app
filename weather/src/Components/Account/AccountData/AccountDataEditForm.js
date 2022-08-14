@@ -93,23 +93,18 @@ export const AccountDataEditForm = ({user, onCancel, setIsEdit}) =>{
             password: password,}))
         }
         
-    },[dispatch,  name, lastName, tel, email, password])
+    },[dispatch, user.id, validForm, name, lastName, tel, email, password])
    
     return(
     <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
+    className = "userInfo"
     >
       <TextField id="name" error = {errorName} value = {name} variant="standard" onChange = {onHandleNameChange}/>
       <TextField id="lastName" error = {errorLastName} value = {lastName} variant="standard" onChange = {onHandleLastNameChange}/>
       <TextField id="email" error = {errorEmail} value = {email} variant="standard" onChange = {onHandleEmailChange}/>
       <TextField id="tel" error = {errorTel} value = {tel} variant="standard" onChange = {onHandleTelChange}/>
       <TextField id="password" error = {errorPassword} value = {password} variant="standard" onChange = {onHandlePasswordChange}/>
-      <Box>
+      <Box className='userAccountBtns'>
         <Button variant="outlined" onClick = {onSave}>{t("sport.btn save")}</Button>
         <Button variant="outlined" onClick = {onCancel}>{t("account.btns.cancel")}</Button>
       </Box>

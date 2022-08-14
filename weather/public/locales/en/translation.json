@@ -84,6 +84,7 @@
         "name": "Name",
         "lastname": "Last Name",
         "events": "My events:",
+        "or": "or",
         "btns":{
             "edit": "Edit",
             "signout": "Sign Out",

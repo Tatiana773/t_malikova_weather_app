@@ -19,7 +19,7 @@ import WbTwilightIcon from '@mui/icons-material/WbTwilight';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import { TableComponent } from '../Forecast/TableComponent';
 import dayjs from "dayjs";
-import './History.css';
+import '../City/CityPage.css';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -68,9 +68,9 @@ export const HistoryComponent = () =>{
     return(
         <Stack >
             <ViewsDatePicker value = {newDate} onChangeDate = {onSetNewDate} />
-            <Card sx = {{backgroundColor:"rgba(248, 248, 246, 0.2)",boxShadow: "5px 5px 5px rgb(90, 87, 87)",}}>
+            <Card sx = {{backgroundColor:"rgba(248, 248, 246, 0.2)",boxShadow: "5px 5px 5px rgb(90, 87, 87)",}} className = "city">
                 <Stack direction="row" className='historyData' >
-                    <CardHeader
+                    <CardHeader className='name'
                         title= {city.name}
                         subheader={city.country+', '+history.date}
                     />
@@ -82,7 +82,7 @@ export const HistoryComponent = () =>{
                             </Stack>
                             <Stack>
                                 <img className='icon' src = {history.day.condition.icon}></img>
-                                <Typography>{history.day.condition.text}</Typography>
+                                <Typography variant = "h6">{history.day.condition.text}</Typography>
                             </Stack>
                             <Stack direction="column">
                                 <Stack direction="row">

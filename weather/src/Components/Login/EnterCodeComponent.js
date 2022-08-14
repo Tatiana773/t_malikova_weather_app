@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { setIsRegisteredAction, } from "../../Store/App/actions";
 import { isValidCode } from "./FormSubmitHandler";
+import { Message } from "../Message/Message";
 import { useTranslation } from 'react-i18next';
 import "../i18n";
 
@@ -34,12 +35,11 @@ export const EnterCodeComponent = () =>{
             if(code === "1234"){
                 dispatch(setIsRegisteredAction(true))
                 navigate("/");
-            }else{
-                alert(t("messages.form error"))
             }
         },[dispatch, code])
     return(
         <div className="form"> 
+            {errorCode?<Message message = {t("messages.form error")}/>: null}
             <Typography>{t("messages.enter code")}</Typography>
             <div className="input">
                 <PasswordInputComponent 

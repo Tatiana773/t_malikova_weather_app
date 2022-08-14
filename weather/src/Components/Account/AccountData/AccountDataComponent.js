@@ -41,8 +41,7 @@ export const AccountDataComponent = () =>{
     const dispatch = useDispatch();
 
     const [expanded, setExpanded] = useState(false);
-    const [dense, setDense] = useState(false);
-    const [secondary, setSecondary] = useState(false);
+    const [dense] = useState(false);
     const onRemoveEvent = useCallback ((id)=>dispatch(deleteSportAction(id)),[dispatch]);
 
     const handleExpandClick = () => {
@@ -54,10 +53,10 @@ export const AccountDataComponent = () =>{
     const onSignOutClick = useCallback(() => {
         dispatch(deleteUserModelAction(user.id));
         dispatch(setIsRegisteredAction(false));
-    }, [dispatch]);
+    }, [dispatch, user.id]);
 
     return(
-        <Card className='userCard'>
+        <Card className='userCard' sx={{backgroundColor: "rgba(248, 248, 246, 0.2)", boxShadow: "5px 5px 5px rgb(90, 87, 87)"}}>
             <CardContent>
                 {isEdit? 
                 <AccountDataEditForm user = {user} onCancel = {onCancelEdit} />: 
@@ -65,7 +64,7 @@ export const AccountDataComponent = () =>{
                 }
             </CardContent>
             <CardActions>
-                <Typography sx={{ fontSize: 20, textAlign: "right" }} color="text.primary"  gutterBottom>
+                <Typography sx={{ fontSize: 20, textAlign: "center", width: "100%" }} color="text.primary"  >
                    {t("account.events")}
                 </Typography>
                 <ExpandMore

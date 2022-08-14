@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { selectSport } from '../../../Store/Home/selectors';
 import { SportCardComponent } from './SportCard';
 import Grid from '@mui/material/Grid';
-import './Sport.css';
 import { useTranslation } from 'react-i18next';
 import "../../i18n";
 
@@ -13,10 +12,10 @@ export const SportEventsComponent =() =>{
     const { t } = useTranslation();
 
     return(
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+        <Grid container spacing={{xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
         {sport.football.map((item) => (
-            item.id = uuidv4(),
-          <Grid item xs={2} sm={4} md={4} key={item.id}>
+            
+          <Grid item xs={2} sm={4} md={4} key={uuidv4()}>
             <SportCardComponent
                 item = {item}
                 title = {t("sport.footbal")}
@@ -30,8 +29,7 @@ export const SportEventsComponent =() =>{
           </Grid>
         ))}
         {sport.cricket.map((item) => (
-            item.id = uuidv4(),
-          <Grid item xs={2} sm={4} md={4} key={item.id}>
+          <Grid item xs={2} sm={4} md={4} key={uuidv4()}>
             <SportCardComponent
                 item = {item}
                 title = {t("sport.cricket")}
@@ -45,8 +43,7 @@ export const SportEventsComponent =() =>{
           </Grid>
         ))}
         {sport.golf.map((item) => (
-            item.id = uuidv4(),
-          <Grid item xs={2} sm={4} md={4} key={item.id}>
+          <Grid item xs={2} sm={4} md={4} key={uuidv4()}>
             <SportCardComponent
                 item = {item}
                 title = {t("sport.golf")}
@@ -55,8 +52,7 @@ export const SportEventsComponent =() =>{
                 place = {item.stadium}
                 country = {item.country}
                 date = {item.start}
-                
-            />
+              />
           </Grid>
         ))}
       </Grid>

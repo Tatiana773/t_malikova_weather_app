@@ -24,7 +24,7 @@ export const PasswordInputComponent = ({id, value, handleChange, error}) => {
 
   return(
     <FormControl sx={{ m: 1, width: "26ch" }} variant="outlined" >
-    <InputLabel htmlFor="outlined-adornment-password">{t("account.password")}</InputLabel>
+     <InputLabel htmlFor="outlined-adornment-password">{t("account.password")}</InputLabel>
         <OutlinedInput
           id={id}
           type={showPassword ? "text" : "password"}

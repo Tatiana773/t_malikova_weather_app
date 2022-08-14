@@ -15,11 +15,13 @@ export const HomePageComponent = () =>{
     const city = useSelector(selectCity);
     const { t } = useTranslation();
     return(
-        <div className='mainInfo'>
-            {city.id?<CityPageComponent/>:<Typography variant = "h4">{t("home.welcome")}</Typography>}
-            
-            <FavouriteCitiesListComponent/>
+        <div className='home'>
+            {city.id? 
+            <div className='mainInfo'>
+                <CityPageComponent/>
+                <FavouriteCitiesListComponent/>
+            </div>:
+            <Typography className='welcome' variant = "h4">{t("home.welcome")}</Typography>}
         </div>
-        
     )
 }

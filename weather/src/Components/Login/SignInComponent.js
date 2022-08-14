@@ -8,6 +8,7 @@ import { PhoneInputComponent } from "./PhoneInputComponent";
 import Button from "@mui/material/Button";
 import { addUserModelAction} from "../../Store/App/actions";
 import { isValidName, isValidEmail, isValidTel, isValidPassword } from "./FormSubmitHandler";
+import { Message } from "../Message/Message";
 import { useTranslation } from 'react-i18next';
 import "../i18n";
 
@@ -93,7 +94,7 @@ export const SignInComponent = () =>{
       }, [password, setErrorPassword, setValidForm]);
    
     const onSubmitSign = useCallback(()=>{
-        if(validForm){
+        if(validForm && name && lastName && tel && email && password){
             dispatch(addUserModelAction({
             name: name,
             lastName: lastName,
@@ -102,13 +103,12 @@ export const SignInComponent = () =>{
             password: password,
           }))
           navigate("/verification")
-        }else{
-            alert(t("messages.form error"))
         }
     }, [name, lastName, tel, email, password, validForm])
       
     return(
         <div className="form"> 
+            {!validForm?<Message message = {t("messages.form error")}/>: null}
             <div className="input">
                 <TextInput 
                     id="name"
@@ -158,6 +158,7 @@ export const SignInComponent = () =>{
                 { errorPassword? <p className="errorText">{errorPasswordText}</p> : null}
             </div>
             <Button variant="text" onClick = {onSubmitSign}>{t("account.btns.signin")}</Button>
+           
         </div>
     )
 }

@@ -7,13 +7,14 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SportsSoccerRoundedIcon from '@mui/icons-material/SportsSoccerRounded';
+import "../../Weather/City/CityPage.css";
 
 
 export const FavouriteSportComponent = ({item, onDeleteEvent}) => {
     const onDelete = useCallback(()=>onDeleteEvent(item.id), [item.id, onDeleteEvent]);
   return (
     <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
-        <ListItem
+        <ListItem className='item'
             secondaryAction={
             <IconButton edge="end" aria-label="delete" onClick = {onDelete}>
                 <DeleteIcon />

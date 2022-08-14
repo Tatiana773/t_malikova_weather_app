@@ -17,7 +17,7 @@ export const CityPageComponent = () =>{
     const city = useSelector(selectCity);
     const favoriteCities = useSelector(selectFavouriteCities);
     const forecast = useSelector(selectForecast);
-    const [currentDate, setCurrentDate] = useState(new Date().toISOString().slice(0, 10));
+    const [currentDate] = useState(new Date().toISOString().slice(0, 10));
     const system = useSelector(selectSystem);
     const { t } = useTranslation();
     
@@ -43,7 +43,7 @@ export const CityPageComponent = () =>{
                 alert(t("messages.choose city"))
             }
         }
-    },[dispatch, city, favoriteCities]);
+    },[dispatch, city, favoriteCities, currentDate, t]);
     const onAddFavouriteCity = useCallback(()=>{
         if(!city.id)return;
         if(favoriteCities.find((item) =>item.id === city?.id)){
@@ -52,17 +52,17 @@ export const CityPageComponent = () =>{
             dispatch(addCityAction(city))
         }
         
-    }, [dispatch, favoriteCities, city]);
+    }, [dispatch, favoriteCities, city, t]);
 
     const onGoForecast = useCallback(()=>{
         navigate("/forecast/" + city?.name);
-    })
+    }, [navigate, city?.name])
     const onGoHistory = useCallback(()=>{
         navigate("/history/"+ city?.name + "/" + currentDate);
-    })
+    }, [navigate, city?.name, currentDate])
     const onGoSport = useCallback(()=>{
         navigate("/sport/"+ city?.name);
-    }) 
+    }, [navigate, city?.name]) 
     return(
         <div className='container'>
             <div className='buttons'>
@@ -73,17 +73,17 @@ export const CityPageComponent = () =>{
             <div className='city info'>
                 <div >
                     <div className='cityButton'>
-                        <h1>{city?.name}</h1>
+                        <h1 className='name'>{city?.name}</h1>
                         <Button variant="outlined" onClick = {onAddFavouriteCity}>{t("city.btns.add to favorites")}</Button>
                     </div>
-                    <p>{city?.region} {city?.country} </p>
+                    <p >{city?.region} {city?.country} </p>
                     <p>{t("city.latitude")} {city?.lat} {t("city.longtitude")} {city?.lon}</p>
                 </div>
                 <div>
                     <div className='temperature'>
                         <div className='temperature'>
                             <p>{forecast?.condition.text}</p>
-                            <img src={forecast?.condition.icon}></img>
+                            <img src={forecast?.condition.icon} alt = "condition"/>
                         </div>
                         
                         <DeviceThermostatIcon/>

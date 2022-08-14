@@ -1,5 +1,5 @@
 import React, { useState, useCallback }from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,11 +17,14 @@ import {AccountSettingsComponent} from "../Account/AccountSettings/AccountSettin
 import { Stack } from '@mui/material';
 import { Link } from "react-router-dom";
 import './Home/HomeComponent.css';
+import '../AppRouter.css';
+
 import { setIsLoginAction } from '../../Store/App/actions';
 import { SwitchComponent } from '../Account/AccountSettings/SwithchComponent';
 import { LangSwitch } from './Home/LangSwitch';
 import { useTranslation } from 'react-i18next';
 import "../i18n";
+import { selectCurrentUser } from '../../Store/App/selectors';
 
 
 
@@ -29,6 +32,7 @@ export const AppBarComponent = ({onModeChanged}) => {
   const { t } = useTranslation();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const user = useSelector(selectCurrentUser);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -111,7 +115,7 @@ export const AppBarComponent = ({onModeChanged}) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user.name} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -131,7 +135,7 @@ export const AppBarComponent = ({onModeChanged}) => {
               onClose={handleCloseUserMenu}
             >
                 <MenuItem onClick={handleCloseUserMenu}>
-                <Link className = "link"  to="/account"><Typography textAlign="center">{t("header.account")}</Typography></Link>
+                <Link className = "link"  to="/account">{t("header.account")}</Link>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu} >
                   <Stack direction ="column">

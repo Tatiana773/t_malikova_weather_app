@@ -1,4 +1,7 @@
-
+.home{
+    position: relative;
+    height: 100%;
+}
 .mainInfo{
     display: flex;
     flex-direction: row;
@@ -14,5 +17,14 @@
 }
 .link{
     text-decoration: none;
-    color:black;
+    color: rgb(12, 138, 216);
+}
+.welcome{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(7, 7, 44);
+    font-style: italic;
+    font-size: 3em;
 }

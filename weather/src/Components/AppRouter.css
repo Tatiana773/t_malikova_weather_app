@@ -1,18 +1,31 @@
+
 .main{
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
-  overflow: scroll;
+  min-height: 900px;
+  max-height: 100%;
 }
 #light{
   background-image: url("https://assets.capitalfm.com/2013/30/weather-1375260252-herowidev4-0.jpg");
-  color: #252121;;
+  color: #252121;
 }
-#dark{
+#dark {
   background-image: url("https://i.pinimg.com/originals/cf/2a/f7/cf2af7d910deadc8095576f7d2cf156d.jpg");
   color: white;
 }
+#dark .name{
+  color: #91caf0;
+  text-shadow:7px 7px 7px #2b2929;
+}
+#dark .city, #dark .cityTable{
+  background-color:rgba(20, 20, 19, 0.596);
+}
+#dark .userCard{
+  background-color:rgba(20, 20, 19, 0.596);
+}
 ::-webkit-scrollbar {
-  width: 5px; 
-  background:rgba(248, 248, 246, 0.2); 
+  scroll-behavior: auto;
+  width: 10px; 
+  height: 10px;
+  background:rgba(145, 133, 133, 0.651); 
 }

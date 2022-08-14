@@ -2,6 +2,7 @@ import React, { useState, } from 'react';
 import { useSelector } from 'react-redux';
 import { selectForecastDays, selectRealCity } from "../../../Store/Home/selectors";
 import { ForecastDayComponent } from './ForecastDayComponent';
+import "../City/CityPage.css"
 
 export const ForecastComponent = () =>{
     const city = useSelector(selectRealCity);
@@ -13,7 +14,7 @@ export const ForecastComponent = () =>{
 
     return(
         <div>
-            <h1>{city.name}</h1>
+            <h1 className='name'>{city.name}</h1>
             {forecastDays.map((day) => <ForecastDayComponent
             key = {day.date}
             day = {day}
