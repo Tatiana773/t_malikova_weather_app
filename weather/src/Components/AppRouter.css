@@ -29,3 +29,10 @@
   height: 10px;
   background:rgba(145, 133, 133, 0.651); 
 }
+.progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+};

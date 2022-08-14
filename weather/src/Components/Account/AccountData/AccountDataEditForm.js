@@ -1,14 +1,18 @@
-import React, { useCallback, useState } from 'react';
-import { updateUserModelAction } from '../../../Store/App/actions';
-import { useDispatch } from 'react-redux';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import React, { useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateUserModelAction } from "../../../Store/App/actions";
 import { isValidName, isValidEmail, isValidTel, isValidPassword } from "../../Login/FormSubmitHandler";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "../../i18n";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 
-export const AccountDataEditForm = ({user, onCancel, setIsEdit}) =>{
+export const AccountDataEditForm = ({user, onCancel}) =>{
+
+    const dispatch = useDispatch();
+    const { t } = useTranslation();
+
     const [password, setPassword] = useState(user.password);
     const [email, setEmail] = useState(user.email);
     const [name, setName] = useState(user.name);
@@ -21,11 +25,7 @@ export const AccountDataEditForm = ({user, onCancel, setIsEdit}) =>{
     const [errorPassword, setErrorPassword] = useState(false);
     const [validForm, setValidForm] = useState(true);
 
-    const dispatch = useDispatch();
-    const { t } = useTranslation();
-
     const onHandleEmailChange = useCallback((event) =>{
-
         if(!isValidEmail(event.target.value)){
             setErrorEmail(true)
             setValidForm(false);
@@ -55,7 +55,6 @@ export const AccountDataEditForm = ({user, onCancel, setIsEdit}) =>{
             setErrorLastName(false);
             setValidForm(true);
         }
-        
         setLastName(event.target.value);
     }, [setLastName, setErrorLastName, setValidForm]);
 
@@ -92,23 +91,53 @@ export const AccountDataEditForm = ({user, onCancel, setIsEdit}) =>{
             email: email,
             password: password,}))
         }
-        
     },[dispatch, user.id, validForm, name, lastName, tel, email, password])
    
     return(
-    <Box
-    className = "userInfo"
-    >
-      <TextField id="name" error = {errorName} value = {name} variant="standard" onChange = {onHandleNameChange}/>
-      <TextField id="lastName" error = {errorLastName} value = {lastName} variant="standard" onChange = {onHandleLastNameChange}/>
-      <TextField id="email" error = {errorEmail} value = {email} variant="standard" onChange = {onHandleEmailChange}/>
-      <TextField id="tel" error = {errorTel} value = {tel} variant="standard" onChange = {onHandleTelChange}/>
-      <TextField id="password" error = {errorPassword} value = {password} variant="standard" onChange = {onHandlePasswordChange}/>
-      <Box className='userAccountBtns'>
-        <Button variant="outlined" onClick = {onSave}>{t("sport.btn save")}</Button>
-        <Button variant="outlined" onClick = {onCancel}>{t("account.btns.cancel")}</Button>
-      </Box>
-    </Box>
+
+        <Box className = "userInfo">
+            <TextField id="name" 
+                error = {errorName}
+                value = {name}
+                variant="standard"
+                onChange = {onHandleNameChange}
+            />
+            <TextField id="lastName" 
+                error = {errorLastName}
+                value = {lastName}
+                variant="standard"
+                onChange = {onHandleLastNameChange}
+            />
+            <TextField id="email"
+                error = {errorEmail}
+                value = {email}
+                variant="standard"
+                onChange = {onHandleEmailChange}
+            />
+            <TextField id="tel"
+                error = {errorTel}
+                value = {tel}
+                variant="standard"
+                onChange = {onHandleTelChange}
+            />
+            <TextField id="password"
+                error = {errorPassword}
+                value = {password}
+                variant="standard"
+                onChange = {onHandlePasswordChange}
+            />
+            <Box className="userAccountBtns">
+                <Button variant="outlined" 
+                    onClick = {onSave}>
+                        {t("sport.btn save")}
+                </Button>
+                <Button variant="outlined"
+                    onClick = {onCancel}>
+                        {t("account.btns.cancel")}
+                </Button>
+            </Box>
+        </Box>
+
     )
 }
 

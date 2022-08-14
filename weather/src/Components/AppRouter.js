@@ -1,31 +1,43 @@
 import React, { useState, createContext, useCallback, useMemo } from "react";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Routes, Route, } from "react-router-dom";
+import { useSelector  } from "react-redux";
+import { selectAreDataLoading } from "../Store/Home/selectors";
 import { HomePageComponent } from "./Weather/Home/HomeComponent";
 import { PageNotFound } from "./PageNotFound/PageNotFound";
-import { CityPageComponent } from "./Weather/City/CityPageComponent";
 import { ForecastComponent } from "./Weather/Forecast/ForecastComponent";
 import { HistoryComponent } from "./Weather/History/HistoryComponent";
 import { SportEventsComponent } from "./Weather/Sport/SportEventsComponent";
-import { AppBarComponent } from '../Components/Weather/AppBar';
+import { AppBarComponent } from "../Components/Weather/AppBar";
 import { AccountDataComponent } from "./Account/AccountData/AccountDataComponent";
-import './AppRouter.css';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CircularProgress } from "@mui/material";
+import "./AppRouter.css";
 
 
 export const ThemeContext = createContext("light");
 
 export const AppRouter = () => {
-  const [currentTheme, setCurrentTheme] = useState("light")
+
+  const areDataLoading = useSelector(selectAreDataLoading);
+
+  const [currentTheme, setCurrentTheme] = useState("light");
+
   const onThemeModeChanged = useCallback((event)=>{
-    setCurrentTheme(event.target.checked? "dark":"light")
-  },[])
+    setCurrentTheme(event.target.checked? "dark":"light");
+  },[]);
+
   const theme = useMemo(() =>createTheme({
-        palette: {
-          mode: currentTheme,
-        },
-      }),[currentTheme],);
+    palette: {
+      mode: currentTheme,
+    },
+  }),[currentTheme],);
+
+  if(areDataLoading){
+    <CircularProgress className="progress"/>
+  }
 
   return (
+    
     <ThemeContext.Provider value = {currentTheme}>
       <ThemeProvider theme={theme}>
         <div id={currentTheme} className="main">

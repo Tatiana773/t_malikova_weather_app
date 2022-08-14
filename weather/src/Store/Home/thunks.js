@@ -12,12 +12,13 @@ import {
     fetchSportSuccess, 
     fetchSportFailure,
 } from "./actions";
-import { getData } from "../../Service/weatherApiProvider";
+import { getData } 
+from "../../Service/weatherApiProvider";
 
 const searchUrl = 'search.json?q=';
 
 export const fetchData = (query) => {
-    return async(dispatch, getState) => {
+    return async(dispatch) => {
         dispatch(fetchDataRequest());
         try{
             const responce = await getData(searchUrl + query);
@@ -31,7 +32,7 @@ export const fetchData = (query) => {
 
 const forecastUrl = 'forecast.json?q=';
 export const fetchForecast = (query) => {
-    return async(dispatch, getState) => {
+    return async(dispatch) => {
         dispatch(fetchForecastRequest());
         try{
             const responce = await getData(forecastUrl + query);
@@ -45,7 +46,7 @@ export const fetchForecast = (query) => {
 
 const historyUrl = 'history.json?q=';
 export const fetchHistory = (query) => {
-    return async(dispatch, getState) => {
+    return async(dispatch) => {
         dispatch(fetchHistoryRequest());
         try{
             const responce = await getData(historyUrl + query);
@@ -59,7 +60,7 @@ export const fetchHistory = (query) => {
 
 const sportUrl = 'sports.json?q=';
 export const fetchSport = (query) => {
-    return async(dispatch, getState) => {
+    return async(dispatch) => {
         dispatch(fetchSportRequest());
         try{
             const responce = await getData(sportUrl + query)

@@ -24,19 +24,22 @@ export const UPDATE_PAST_DATE_ACTION = 'UPDATE_PAST_DATE_ACTION';
 export const ADD_SPORT_ACTION = 'ADD_SPORT_ACTION';
 export const DELETE_SPORT_ACTION = 'DELETE_SPORT_ACTION';
 
-export const SET_SYSTEM_ACTION = 'SET_SYSTEM_ACTION'
+export const SET_SYSTEM_ACTION = 'SET_SYSTEM_ACTION';
+export const SET_LANG_ACTION = 'SET_LANG_ACTION';
 
 export const fetchDataRequest = () => {
     return{
         type: FETCH_DATA_ACTION_REQUEST,
     }
 }
+
 export const fetchDataSuccess = (data) => {
     return{
         type: FETCH_DATA_ACTION_SUCCESS,
         data,
     }
 }
+
 export const fetchDataFailure = (error) => {
     return{
         type: FETCH_DATA_ACTION_FAILURE,
@@ -82,29 +85,34 @@ export const fetchForecastRequest = () => {
         type: FETCH_FORECAST_ACTION_REQUEST,
     }
 }
+
 export const fetchForecastSuccess = (forecastData) => {
     return{
         type: FETCH_FORECAST_ACTION_SUCCESS,
         forecastData,
     }
 }
+
 export const fetchForecastFailure = (error) => {
     return{
         type: FETCH_FORECAST_ACTION_FAILURE,
         error,
     }
 }
+
 export const fetchHistoryRequest = () => {
     return{
         type: FETCH_HISTORY_ACTION_REQUEST,
     }
 }
+
 export const fetchHistorySuccess = (historyData) => {
     return{
         type: FETCH_HISTORY_ACTION_SUCCESS,
         historyData,
     }
 }
+
 export const fetchHistoryFailure = (error) => {
     return{
         type: FETCH_HISTORY_ACTION_FAILURE,
@@ -117,12 +125,14 @@ export const fetchSportRequest = () => {
         type: FETCH_SPORT_ACTION_REQUEST,
     }
 }
+
 export const fetchSportSuccess = (sportData) => {
     return{
         type: FETCH_SPORT_ACTION_SUCCESS,
         sportData,
     }
 }
+
 export const fetchSportFailure = (error) => {
     return{
         type: FETCH_SPORT_ACTION_FAILURE,
@@ -136,15 +146,24 @@ export const addSportAction = (event) => {
         event,
     }
 }
+
 export const deleteSportAction = (id) => {
     return{
         type: DELETE_SPORT_ACTION,
         id,
     }
 }
+
 export const setSystemAction = (value)=>{
     return{
         type: SET_SYSTEM_ACTION,
         value,
+    }
+}
+
+export const setLangAction = (lang)=>{
+    return{
+        type: SET_LANG_ACTION,
+        lang,
     }
 }

@@ -1,21 +1,23 @@
 import React, { useState, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./LoginComponent.css";
+import { addUserModelAction} from "../../Store/App/actions";
 import { TextInput } from "./TextInputComponent";
 import { PasswordInputComponent } from "./PasswordInputComponent";
 import { PhoneInputComponent } from "./PhoneInputComponent";
-import Button from "@mui/material/Button";
-import { addUserModelAction} from "../../Store/App/actions";
 import { isValidName, isValidEmail, isValidTel, isValidPassword } from "./FormSubmitHandler";
 import { Message } from "../Message/Message";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "../i18n";
+import Button from "@mui/material/Button";
+import "./LoginComponent.css";
 
 export const SignInComponent = () =>{
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { t } = useTranslation();
+
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -33,8 +35,8 @@ export const SignInComponent = () =>{
  
     const onHandleEmailChange = useCallback((event) =>{
         if(!isValidEmail(event.target.value)){
-            setErrorEmail(true)
-            setErrorText(t("messages.invalid"))
+            setErrorEmail(true);
+            setErrorText(t("messages.invalid"));
             setValidForm(false);
         }else {
             setErrorEmail(false);
@@ -46,7 +48,7 @@ export const SignInComponent = () =>{
     const onHandleNameChange = useCallback((event) =>{
         if(!isValidName(event.target.value)){
             setErrorName(true);
-            setErrorText(t("messages.invalid"))
+            setErrorText(t("messages.invalid"));
             setValidForm(false);
         } else {
             setErrorName(false);
@@ -58,20 +60,19 @@ export const SignInComponent = () =>{
     const onHandleLastNameChange = useCallback((event) =>{
         if(!isValidName(event.target.value)){
             setErrorLastName(true);
-            setErrorText(t("messages.invalid"))
+            setErrorText(t("messages.invalid"));
             setValidForm(false);
         } else {
             setErrorLastName(false);
             setValidForm(true);
         }
-        
         setLastName(event.target.value);
     }, [setLastName, setErrorLastName, setErrorText, setValidForm]);
 
     const onHandleTelChange = useCallback((event) =>{
         if(!isValidTel(event.target.value)){
             setErrorTel(true);
-            setErrorTelText(t("messages.tel error"))
+            setErrorTelText(t("messages.tel error"));
             setValidForm(false);
         } else {
             setErrorTel(false);
@@ -83,8 +84,8 @@ export const SignInComponent = () =>{
     const onHandlePasswordChange = useCallback((event) =>{
         if(password.length > 5) (event.target.value = "");
         if(!isValidPassword(event.target.value)){
-            setErrorPassword(true)
-            setErrorPasswordText(t("messages.password error"))
+            setErrorPassword(true);
+            setErrorPasswordText(t("messages.password error"));
             setValidForm(false);
         }else {
             setErrorPassword(false);
@@ -101,14 +102,17 @@ export const SignInComponent = () =>{
             tel: tel,
             email: email,
             password: password,
-          }))
-          navigate("/verification")
+          }));
+          navigate("/verification");
         }
-    }, [name, lastName, tel, email, password, validForm])
+    }, [name, lastName, tel, email, password, validForm]);
       
     return(
+
         <div className="form"> 
-            {!validForm?<Message message = {t("messages.form error")}/>: null}
+            {!validForm?
+            <Message message = {t("messages.form error")}/>:
+            null}
             <div className="input">
                 <TextInput 
                     id="name"
@@ -136,7 +140,11 @@ export const SignInComponent = () =>{
                     error = {errorTel}
                     onTelChange = {onHandleTelChange}
                     />
-                    {errorTel ? <p className = "errorText">{errorTelText}</p> : null}
+                {errorTel ? 
+                <p className = "errorText">
+                    {errorTelText}
+                </p>:
+                null}
             </div> 
             <div className="input">
                 <TextInput 
@@ -155,10 +163,16 @@ export const SignInComponent = () =>{
                     handleChange = {onHandlePasswordChange}
                     error = {errorPassword}
                 />
-                { errorPassword? <p className="errorText">{errorPasswordText}</p> : null}
+                { errorPassword?
+                <p className="errorText">
+                    {errorPasswordText}
+                </p>:
+                null}
             </div>
-            <Button variant="text" onClick = {onSubmitSign}>{t("account.btns.signin")}</Button>
-           
+            <Button variant="text"
+                onClick = {onSubmitSign}>
+                    {t("account.btns.signin")}
+            </Button>
         </div>
     )
 }

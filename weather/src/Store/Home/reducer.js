@@ -5,6 +5,7 @@ import {
     UPDATE_CITY_ACTION,
     UPDATE_DATE_ACTION,
     SET_SYSTEM_ACTION,
+    SET_LANG_ACTION,
     ADD_CITY_ACTION,
     DELETE_CITY_ACTION,
     FETCH_FORECAST_ACTION_SUCCESS,
@@ -32,31 +33,31 @@ const initialState = {
     sport: {},
     favouriteEvents: [],
     system: "",
+    lang: ""
 }
 
 export const mainPageReducer = (state = initialState, action) =>{
-    console.log("main:", state)
-     switch(action.type){
-        case FETCH_DATA_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null}
-        case FETCH_DATA_ACTION_SUCCESS: return {...state, items: action.data, areDataLoading: false}
-        case FETCH_DATA_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error}
-        case UPDATE_CITY_ACTION: return {...state, city: action.city, areDataLoading: false,}
-        case ADD_CITY_ACTION: return{...state, favouriteCities: [...state.favouriteCities, action.city], areDataLoading: false,}
-        case DELETE_CITY_ACTION: return{...state, areDataLoading: false, favouriteCities: state.favouriteCities.filter((item)=>item.id !== action.id)}
-        case UPDATE_DATE_ACTION: return{...state, date: action.date, areDataLoading: false,}
-        case FETCH_FORECAST_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null}
-        case FETCH_FORECAST_ACTION_SUCCESS: return {...state, forecast: action.forecastData, areDataLoading: false}
-        case FETCH_FORECAST_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error}
-        case FETCH_HISTORY_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null}
-        case FETCH_HISTORY_ACTION_SUCCESS: return {...state, history: action.historyData, areDataLoading: false}
-        case FETCH_HISTORY_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error}
-        case FETCH_SPORT_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null}
-        case FETCH_SPORT_ACTION_SUCCESS: return {...state, sport: action.sportData, areDataLoading: false}
-        case FETCH_SPORT_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error}
-        case ADD_SPORT_ACTION: return{...state, areDataLoading: false, favouriteEvents: [...state.favouriteEvents, action.event]}
-        case DELETE_SPORT_ACTION: return{...state, areDataLoading: false, favouriteEvents: state.favouriteEvents.filter((item)=>item.id !== action.id)}
-        case SET_SYSTEM_ACTION: return{...state, areDataLoading: false, system: action.value}
-        
+    switch(action.type){
+        case FETCH_DATA_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null};
+        case FETCH_DATA_ACTION_SUCCESS: return {...state, items: action.data, areDataLoading: false};
+        case FETCH_DATA_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error};
+        case UPDATE_CITY_ACTION: return {...state, city: action.city, areDataLoading: false,};
+        case ADD_CITY_ACTION: return{...state, favouriteCities: [...state.favouriteCities, action.city], areDataLoading: false,};
+        case DELETE_CITY_ACTION: return{...state, areDataLoading: false, favouriteCities: state.favouriteCities.filter((item)=>item.id !== action.id)};
+        case UPDATE_DATE_ACTION: return{...state, date: action.date, areDataLoading: false,};
+        case FETCH_FORECAST_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null};
+        case FETCH_FORECAST_ACTION_SUCCESS: return {...state, forecast: action.forecastData, areDataLoading: false};
+        case FETCH_FORECAST_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error};
+        case FETCH_HISTORY_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null};
+        case FETCH_HISTORY_ACTION_SUCCESS: return {...state, history: action.historyData, areDataLoading: false};
+        case FETCH_HISTORY_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error};
+        case FETCH_SPORT_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null};
+        case FETCH_SPORT_ACTION_SUCCESS: return {...state, sport: action.sportData, areDataLoading: false};
+        case FETCH_SPORT_ACTION_FAILURE: return {...state, areDataLoading: false, error: action.error};
+        case ADD_SPORT_ACTION: return{...state, areDataLoading: false, favouriteEvents: [...state.favouriteEvents, action.event]};
+        case DELETE_SPORT_ACTION: return{...state, areDataLoading: false, favouriteEvents: state.favouriteEvents.filter((item)=>item.id !== action.id)};
+        case SET_SYSTEM_ACTION: return{...state, areDataLoading: false, system: action.value};
+        case SET_LANG_ACTION: return{...state, areDataLoading: false, lang: action.lang};
         default: return state;
-     }
+    }
 }

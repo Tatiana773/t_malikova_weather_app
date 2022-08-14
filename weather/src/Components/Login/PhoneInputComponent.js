@@ -4,7 +4,7 @@ import { IMaskInput } from "react-imask";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "../i18n";
 
 const TextMaskCustom = forwardRef(function TextMaskCustom (props, ref) {
@@ -29,35 +29,38 @@ TextMaskCustom.propTypes = {
 };
 
 
-export const PhoneInputComponent = ({id, value, error, onTelChange}) => {
-    const [values, setValues] = useState({
-        textmask: "+__ (___) ___-____",
-        numberformat: "1320",
-    });
+export const PhoneInputComponent = ({id, error, onTelChange}) => {
 
-    const handleChange = (event) => {
+  const { t } = useTranslation();
+
+  const [values, setValues] = useState({
+    textmask: "+__ (___) ___-____",
+    numberformat: "1320",
+  });
+
+  const handleChange = (event) => {
     setValues({
-        ...values,
-        [event.target.name]: event.target.value,
+      ...values,
+      [event.target.name]: event.target.value,
     });
-    };
-    const { t } = useTranslation();
+  };
+
   return (
-    
-      <FormControl >
-        <InputLabel htmlFor="tel">Phone</InputLabel>
-        <OutlinedInput
-            label={t("account.tel")}
-            autoComplete="phone"
-            value={values.textmask}
-            onChange={handleChange}
-            onBlur = {onTelChange}
-            name="textmask"
-            error = {error}
-            id={id}
-            inputComponent={TextMaskCustom}
-        />
-      </FormControl>
+
+    <FormControl >
+      <InputLabel htmlFor="tel">Phone</InputLabel>
+      <OutlinedInput
+        label={t("account.tel")}
+        autoComplete="phone"
+        value={values.textmask}
+        onChange={handleChange}
+        onBlur = {onTelChange}
+        name="textmask"
+        error = {error}
+        id={id}
+        inputComponent={TextMaskCustom}
+      />
+    </FormControl>
 
   );
 }
