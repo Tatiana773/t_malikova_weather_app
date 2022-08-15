@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../../Store/Home/selectors";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
@@ -51,9 +53,14 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export const SwitchComponent = ({onChangeMode}) => {
+
+  const theme = useSelector(selectTheme);
+
   return (
       <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} onChange = {onChangeMode}/>}
+        control={<MaterialUISwitch sx={{ m: 1 }} 
+        checked ={ theme === "dark"? true : false }
+        onChange = {onChangeMode}/>}
       />
    
   );

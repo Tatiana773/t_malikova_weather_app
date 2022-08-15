@@ -19,7 +19,8 @@ import {
     FETCH_SPORT_ACTION_FAILURE,
     ADD_SPORT_ACTION,
     DELETE_SPORT_ACTION,
-} from './actions';
+    SET_THEME_ACTION,
+} from "./actions";
 
 const initialState = {
     items: [],
@@ -33,7 +34,8 @@ const initialState = {
     sport: {},
     favouriteEvents: [],
     system: "",
-    lang: ""
+    lang: "", 
+    theme: "",
 }
 
 export const mainPageReducer = (state = initialState, action) =>{
@@ -58,6 +60,7 @@ export const mainPageReducer = (state = initialState, action) =>{
         case DELETE_SPORT_ACTION: return{...state, areDataLoading: false, favouriteEvents: state.favouriteEvents.filter((item)=>item.id !== action.id)};
         case SET_SYSTEM_ACTION: return{...state, areDataLoading: false, system: action.value};
         case SET_LANG_ACTION: return{...state, areDataLoading: false, lang: action.lang};
+        case SET_THEME_ACTION: return{...state, areDataLoading: false, theme: action.theme};
         default: return state;
     }
 }

@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import { appReducer } from "./App/reducer";
 import { mainPageReducer } from "./Home/reducer";
-import thunk from 'redux-thunk';
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-    key: 'root',
+    key: "root",
     storage,
 }
 

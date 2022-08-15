@@ -15,7 +15,7 @@ import {
 import { getData } 
 from "../../Service/weatherApiProvider";
 
-const searchUrl = 'search.json?q=';
+const searchUrl = "search.json?q=";
 
 export const fetchData = (query) => {
     return async(dispatch) => {
@@ -30,7 +30,7 @@ export const fetchData = (query) => {
     }
 } 
 
-const forecastUrl = 'forecast.json?q=';
+const forecastUrl = "forecast.json?q=";
 export const fetchForecast = (query) => {
     return async(dispatch) => {
         dispatch(fetchForecastRequest());
@@ -44,7 +44,7 @@ export const fetchForecast = (query) => {
     }
 } 
 
-const historyUrl = 'history.json?q=';
+const historyUrl = "history.json?q=";
 export const fetchHistory = (query) => {
     return async(dispatch) => {
         dispatch(fetchHistoryRequest());
@@ -58,7 +58,7 @@ export const fetchHistory = (query) => {
     }
 } 
 
-const sportUrl = 'sports.json?q=';
+const sportUrl = "sports.json?q=";
 export const fetchSport = (query) => {
     return async(dispatch) => {
         dispatch(fetchSportRequest());

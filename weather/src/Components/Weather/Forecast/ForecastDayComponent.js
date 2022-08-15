@@ -28,7 +28,7 @@ export const ForecastDayComponent = ({day, expanded, onHandleChange}) =>{
             setMaxTemperature(day.day.maxtemp_c);
             setMinTemperature(day.day.mintemp_c);
         }
-    },[system, setMaxTemperature, setMinTemperature]);
+    },[system, day, setMaxTemperature, setMinTemperature]);
 
     return(
 

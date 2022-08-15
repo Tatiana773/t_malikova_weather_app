@@ -1,7 +1,8 @@
-import React, { useState, createContext, useCallback, useMemo } from "react";
+import React, { useState, createContext, useCallback, useMemo, useEffect } from "react";
 import { Routes, Route, } from "react-router-dom";
-import { useSelector  } from "react-redux";
-import { selectAreDataLoading } from "../Store/Home/selectors";
+import { useSelector, useDispatch} from "react-redux";
+import { selectAreDataLoading, selectTheme } from "../Store/Home/selectors";
+import { setThemeAction } from "../Store/Home/actions";
 import { HomePageComponent } from "./Weather/Home/HomeComponent";
 import { PageNotFound } from "./PageNotFound/PageNotFound";
 import { ForecastComponent } from "./Weather/Forecast/ForecastComponent";
@@ -18,19 +19,26 @@ export const ThemeContext = createContext("light");
 
 export const AppRouter = () => {
 
-  const areDataLoading = useSelector(selectAreDataLoading);
+  const dispatch = useDispatch();
 
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const areDataLoading = useSelector(selectAreDataLoading);
+  const updatedTheme = useSelector(selectTheme);
+
+  const [currentTheme, setCurrentTheme] = useState(updatedTheme);
 
   const onThemeModeChanged = useCallback((event)=>{
     setCurrentTheme(event.target.checked? "dark":"light");
-  },[]);
+  },[setCurrentTheme]);
 
   const theme = useMemo(() =>createTheme({
     palette: {
       mode: currentTheme,
     },
   }),[currentTheme],);
+
+  useEffect(()=>{
+    dispatch(setThemeAction(currentTheme));
+  },[dispatch, setCurrentTheme, currentTheme]);
 
   if(areDataLoading){
     <CircularProgress className="progress"/>

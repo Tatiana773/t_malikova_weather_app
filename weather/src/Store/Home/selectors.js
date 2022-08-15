@@ -13,3 +13,4 @@ export const selectEvents = (state) => state.main.favouriteEvents;
 export const selectRealCity = (state) => state.main.forecast.location;
 export const selectSystem = (state) => state.main.system;
 export const selectLang = (state) => state.main.lang;
+export const selectTheme = (state) => state.main.theme;
