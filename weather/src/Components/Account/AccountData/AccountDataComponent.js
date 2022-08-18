@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { selectCurrentUser, selectIsEdit } from "../../../Store/App/selectors";
 import { deleteSportAction } from "../../../Store/Home/actions";
-import { editUserAction, setIsRegisteredAction, deleteUserModelAction } from "../../../Store/App/actions";
+import { editUserAction, setIsRegisteredAction, deleteUserModelAction, setIsLoginAction } from "../../../Store/App/actions";
 import { selectEvents } from "../../../Store/Home/selectors";
 import {FavouriteSportComponent}  from "./FavouriteSport";
 import { AccountData } from "./AccountData";
@@ -39,6 +40,7 @@ export const AccountDataComponent = () =>{
 
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState(false);
     const [dense] = useState(false);
@@ -61,8 +63,10 @@ export const AccountDataComponent = () =>{
 
     const onSignOutClick = useCallback(() => {
         dispatch(deleteUserModelAction(user.id));
+        dispatch(setIsLoginAction(false));
         dispatch(setIsRegisteredAction(false));
-    }, [dispatch, user.id]);
+        navigate("/");
+    }, [dispatch, navigate, user]);
 
     return(
 
@@ -93,9 +97,7 @@ export const AccountDataComponent = () =>{
                         key={item.id}
                         item={item} 
                         onDeleteEvent= {onRemoveEvent}
-                        />):
-                        <Typography>{t("city.messages.no events")}</Typography>
-                    }
+                        />):null }
                     </List>
                 </CardContent>
             </Collapse>

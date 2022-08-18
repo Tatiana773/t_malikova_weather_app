@@ -11,14 +11,12 @@
         "feels like": "Feels like",
         "last updated": "Last updated",
         "favourite cities":"Favourite cities:"
-        
     },
     "messages":{
         "choose city": "Please choose a city",
         "city in list": "This city is in the list",
+        "event in list": "This event is in the list",
         "list is empty": "The list is empty",
-        "request failure": "Something went wrong",
-        "no events": "No events for now",
         "code error": "Code should contain 4 numbers only",
         "form error": "Check data",
         "invalid": " is invalid",
@@ -49,7 +47,8 @@
         "account": "Account",
         "settings": "Settings",
         "metric": "Metric",
-        "imperial": "Imperial"
+        "imperial": "Imperial",
+        "open settings": "Open settings"
     },
     "account":{
         "tel":"Phone",

@@ -48,7 +48,7 @@ export const CityPageComponent = () =>{
     },[dispatch, city, favoriteCities, currentDate, t]);
 
     const onAddFavouriteCity = useCallback(()=>{
-        if(!city.id)return;
+        if(!city.id) return;
         if(favoriteCities.find((item) =>item.id === city?.id)){
             alert(t("messages.city in list"));
         } else{

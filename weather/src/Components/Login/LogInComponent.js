@@ -27,6 +27,7 @@ export const LogInComponent = () =>{
     const [errorPassword, setErrorPassword] = useState(false);
     const [errorPasswordText, setErrorPasswordText] = useState("");
     const [validForm, setValidForm] = useState(true);
+    const [showMessage, setShowMessage] = useState(false);
     
     const onHandleEmailChange = useCallback((event) =>{
         if(!isValidEmail(event.target.value)){
@@ -60,8 +61,10 @@ export const LogInComponent = () =>{
                 dispatch(setCurrentUserAction(current));
                 dispatch(setIsLoginAction(true));
             }
+        }else{
+           setShowMessage(true);
         }
-    },[dispatch, users, validForm]);
+    },[dispatch, users, email, password, validForm, setShowMessage]);
 
     const onRegister = useCallback(()=>{
         navigate("/register");
@@ -70,7 +73,7 @@ export const LogInComponent = () =>{
     return(
 
         <div className="form"> 
-            {!validForm?
+            {showMessage?
             <Message message = {t("messages.form error")}/>: 
             null}
             <div className="input">

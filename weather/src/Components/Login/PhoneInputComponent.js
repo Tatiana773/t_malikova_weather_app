@@ -48,7 +48,7 @@ export const PhoneInputComponent = ({id, error, onTelChange}) => {
   return (
 
     <FormControl >
-      <InputLabel htmlFor="tel">Phone</InputLabel>
+      <InputLabel htmlFor="tel">{t("account.tel")}</InputLabel>
       <OutlinedInput
         label={t("account.tel")}
         autoComplete="phone"

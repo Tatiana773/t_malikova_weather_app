@@ -54,7 +54,7 @@ export const updateUserModelAction = ({name, lastName, tel, email, password, id}
   }
 }
   
-export const deleteUserModelAction = ({ id }) => {
+export const deleteUserModelAction = (id) => {
 
   return {
     type: DELETE_USER_ACTION,

@@ -20,6 +20,7 @@ export const EnterCodeComponent = () =>{
     const [code, setCode] = useState("");
     const [errorCode, setErrorCode] = useState(false);
     const [errorCodeText, setErrorCodeText] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
     
     const onHandleCodeChange = useCallback((event) =>{
         if(code.length > 3) (event.target.value = "");
@@ -36,13 +37,15 @@ export const EnterCodeComponent = () =>{
         if(code === "1234"){
             dispatch(setIsRegisteredAction(true));
             navigate("/");
-        }
-    },[dispatch, code]);
+        }else{
+            setShowMessage(true);
+         }
+    },[dispatch, code, setShowMessage]);
 
     return(
 
         <div className="form"> 
-            {errorCode?
+            {showMessage?
             <Message message = {t("messages.form error")}/>: 
             null}
             <Typography>{t("messages.enter code")}</Typography>

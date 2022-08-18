@@ -15,9 +15,8 @@
     "messages":{
         "choose city": "Виберіть місто",
         "city in list": "Це місто вже включено до списку",
+        "event in list": "Ця подія вже у списку",
         "list is empty": "Список порожній",
-        "request failure": "Щось пішло не так",
-        "no events": "На зараз немає подій",
         "code error": "Код має містити тільки 4 цифри",
         "form error": "Перевірте дані",
         "invalid": " не корректно",
@@ -48,7 +47,8 @@
         "account": "Акаунт",
         "settings": "Налаштування",
         "metric": "Метрична",
-        "imperial": "Британська"
+        "imperial": "Британська",
+        "open settings": "Відкрити налаштування"
     },
     "account":{
         "tel":"Телефон",

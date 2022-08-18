@@ -24,7 +24,7 @@ export const AppRouter = () => {
   const areDataLoading = useSelector(selectAreDataLoading);
   const updatedTheme = useSelector(selectTheme);
 
-  const [currentTheme, setCurrentTheme] = useState(updatedTheme);
+  const [currentTheme, setCurrentTheme] = useState(updatedTheme || "light");
 
   const onThemeModeChanged = useCallback((event)=>{
     setCurrentTheme(event.target.checked? "dark":"light");

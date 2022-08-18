@@ -17,7 +17,8 @@ export const SportEventsComponent =() =>{
     
     <Grid container spacing={{xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
       {sport.football.map((item) => (
-        <Grid item xs={2} sm={4} md={4} key={uuidv4()}>
+        item.id = uuidv4(),
+        <Grid item xs={2} sm={4} md={4} key={item.id}>
           <SportCardComponent
             item = {item}
             title = {t("sport.footbal")}
@@ -31,7 +32,8 @@ export const SportEventsComponent =() =>{
         </Grid>
       ))}
       {sport.cricket.map((item) => (
-        <Grid item xs={2} sm={4} md={4} key={uuidv4()}>
+        item.id = uuidv4(),
+        <Grid item xs={2} sm={4} md={4} key={item.id}>
           <SportCardComponent
             item = {item}
             title = {t("sport.cricket")}
@@ -44,7 +46,8 @@ export const SportEventsComponent =() =>{
         </Grid>
       ))}
       {sport.golf.map((item) => (
-        <Grid item xs={2} sm={4} md={4} key={uuidv4()}>
+        item.id = uuidv4(),
+        <Grid item xs={2} sm={4} md={4} key={item.id}>
           <SportCardComponent
             item = {item}
             title = {t("sport.golf")}

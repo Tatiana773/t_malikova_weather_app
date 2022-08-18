@@ -32,6 +32,7 @@ export const SignInComponent = () =>{
     const [errorPassword, setErrorPassword] = useState(false);
     const [errorPasswordText, setErrorPasswordText] = useState("");
     const [validForm, setValidForm] = useState(true);
+    const [showMessage, setShowMessage] = useState(false);
  
     const onHandleEmailChange = useCallback((event) =>{
         if(!isValidEmail(event.target.value)){
@@ -104,13 +105,15 @@ export const SignInComponent = () =>{
             password: password,
           }));
           navigate("/verification");
+        }else{
+            setShowMessage(true);
         }
     }, [name, lastName, tel, email, password, validForm]);
       
     return(
 
         <div className="form"> 
-            {!validForm?
+            {showMessage?
             <Message message = {t("messages.form error")}/>:
             null}
             <div className="input">

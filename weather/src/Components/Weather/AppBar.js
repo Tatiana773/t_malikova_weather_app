@@ -123,7 +123,7 @@ export const AppBarComponent = ({onModeChanged}) => {
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title={t("header.open settings")}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt={user.name} src="/static/images/avatar/2.jpg" />
               </IconButton>

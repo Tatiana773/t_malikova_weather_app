@@ -17,7 +17,7 @@ const initialState = {
 }
 
 export const appReducer = (state = initialState, action) => {
-
+  console.log("app", state)
   switch (action.type) {
     case ADD_USER_ACTION: return{...state, users: [...state.users, action.user],};
     case SET_CURRENT_USER_ACTION: return{...state,currentUser: action.user,};
@@ -35,7 +35,7 @@ export const appReducer = (state = initialState, action) => {
     };
     case DELETE_USER_ACTION: return {...state, users: state.users.filter((user) => user.id !== action.id)}; 
     case REGISTERED_ACTION: return {...state, isRegistered: action.isRegistered};
-    case LOG_IN_ACTION: return {...state, isLogin: action.isLogin};
+    case LOG_IN_ACTION: return {...state, isLogin: action.isLogin, isRegistered: true};
     default: return state;
   }
 }

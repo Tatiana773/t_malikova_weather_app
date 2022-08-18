@@ -39,6 +39,7 @@ const initialState = {
 }
 
 export const mainPageReducer = (state = initialState, action) =>{
+    console.log("main", state)
     switch(action.type){
         case FETCH_DATA_ACTION_REQUEST: return{ ...state, areDataLoading: true, error: null};
         case FETCH_DATA_ACTION_SUCCESS: return {...state, items: action.data, areDataLoading: false};

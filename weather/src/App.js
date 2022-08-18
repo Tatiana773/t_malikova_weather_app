@@ -1,4 +1,4 @@
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
 import { selectIsLogin } from "./Store/App/selectors";
 import { RegistrationRouter } from "./Components/Login/index";
