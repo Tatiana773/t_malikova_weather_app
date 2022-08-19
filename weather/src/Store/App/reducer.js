@@ -17,7 +17,6 @@ const initialState = {
 }
 
 export const appReducer = (state = initialState, action) => {
-  console.log("app", state)
   switch (action.type) {
     case ADD_USER_ACTION: return{...state, users: [...state.users, action.user],};
     case SET_CURRENT_USER_ACTION: return{...state,currentUser: action.user,};

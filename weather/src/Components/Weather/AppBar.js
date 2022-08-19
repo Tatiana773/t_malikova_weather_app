@@ -6,7 +6,7 @@ import "../i18n";
 import { selectCurrentUser } from "../../Store/App/selectors";
 import { setIsLoginAction } from "../../Store/App/actions";
 import { SearchCityComponent } from "./Home/Autocomplete";
-import {AccountSettingsComponent} from "../Account/AccountSettings/AccountSettingsComponent";
+import { AccountSettingsComponent } from "../Account/AccountSettings/AccountSettingsComponent";
 import { SwitchComponent } from "../Account/AccountSettings/SwithchComponent";
 import { LangSwitch } from "./Home/LangSwitch";
 import { Link } from "react-router-dom";

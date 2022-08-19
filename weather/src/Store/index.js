@@ -18,10 +18,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const logger = store => next => action => {
-    console.group(action.type)
-    console.info("dispatching", action)
     let result = next(action)
-    console.groupEnd()
     return result
 }
 

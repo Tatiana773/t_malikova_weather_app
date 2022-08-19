@@ -6,6 +6,7 @@ import { selectCity, selectFavouriteCities, selectForecast, selectSystem } from 
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../i18n";
+import { Message } from "../../Message/Message";
 import Button from "@mui/material/Button";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 import OpacitySharpIcon from "@mui/icons-material/OpacitySharp";
@@ -24,6 +25,7 @@ export const CityPageComponent = () =>{
     const system = useSelector(selectSystem);
 
     const [currentDate] = useState(new Date().toISOString().slice(0, 10));
+    const [showMessage, setShowMessage] = useState(false);
     
     
     useEffect(()=>{
@@ -42,7 +44,7 @@ export const CityPageComponent = () =>{
                 dispatch(fetchHistory(favoriteCities[0].name +"%20"+favoriteCities[0].region +"&dt=" + currentDate + "&lang=en"));
                 dispatch(fetchSport(favoriteCities[0].name));
             }else{
-                alert(t("messages.choose city"))
+            alert(t("messages.choose city"))
             }
         }
     },[dispatch, city, favoriteCities, currentDate, t]);
@@ -50,7 +52,7 @@ export const CityPageComponent = () =>{
     const onAddFavouriteCity = useCallback(()=>{
         if(!city.id) return;
         if(favoriteCities.find((item) =>item.id === city?.id)){
-            alert(t("messages.city in list"));
+            setShowMessage(true);
         } else{
             dispatch(addCityAction(city));
         }
@@ -93,6 +95,7 @@ export const CityPageComponent = () =>{
             </div>
             <div className="city info">
                 <div >
+                    {showMessage? <Message message = {t("messages.city in list")} />: null}
                     <div className="cityButton">
                         <h1 className="name">{city?.name}</h1>
                         <Button variant="outlined"
